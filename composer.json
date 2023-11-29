@@ -1,5 +1,5 @@
 {
-    "name": "gridonic/alt-text-generator",
+    "name": "gridonic/statamic-alt-text-generator",
     "autoload": {
         "psr-4": {
             "Gridonic\\AltTextGenerator\\": "src"
