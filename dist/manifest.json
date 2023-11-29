@@ -1,0 +1,12 @@
+{
+  "resources/js/alt-text-generator.js": {
+    "file": "alt-text-generator.js",
+    "src": "resources/js/alt-text-generator.js",
+    "isEntry": true
+  },
+  "resources/css/alt-text-generator.css": {
+    "file": "alt-text-generator.css",
+    "src": "resources/css/alt-text-generator.css",
+    "isEntry": true
+  }
+}
