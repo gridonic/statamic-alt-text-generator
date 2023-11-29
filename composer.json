@@ -1,0 +1,29 @@
+{
+    "name": "gridonic/alt-text-generator",
+    "autoload": {
+        "psr-4": {
+            "Gridonic\\AltTextGenerator\\": "src"
+        }
+    },
+    "require": {
+      "statamic/cms": "^4.0",
+      "ext-yaml": "*",
+      "ext-json": "*"
+    },
+    "extra": {
+        "statamic": {
+            "name": "Alt Text Generator",
+            "description": "Alt Text Generator addon"
+        },
+        "laravel": {
+            "providers": [
+                "Gridonic\\AltTextGenerator\\ServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pixelfear/composer-dist-plugin": true
+        }
+    }
+}
