@@ -68,7 +68,7 @@ export default {
         const altText = data.altText;
         localStorage.setItem('altTextToStore', altText);
         const textField = document.querySelector('input[name="alt_de"]');
-        this.update(textField, { elementId: altText });
+        this.update(textField, { value: altText });
         this.isLoading = false;
       } catch (error) {
         console.log(error);
