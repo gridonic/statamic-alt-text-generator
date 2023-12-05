@@ -32,18 +32,13 @@ class AltTextGeneratorController extends Controller
         $altText = $this->generateAltText($url, $textLanguage);
 
 
-        $this->saveAltText($altText, $url, $textLanguage);
+        // $this->saveAltText($altText, $url, $textLanguage);
 
         $responseData = [
             'altText' => $altText,
-            'textLanguage' => $textLanguage
         ];
 
-        $jsonResponse = json_encode($responseData);
-
-        header('Content-Type: application/json; charset=utf-8');
-
-        echo $jsonResponse;
+        echo json_encode($responseData);
 
 
     }
@@ -66,12 +61,12 @@ class AltTextGeneratorController extends Controller
         return $altText;
 
     }
-
+/*
     public function saveAltText(string $altText, string $imageUrl, string $textLanguage): void
     {
         $imageDataService = new ImageDataService();
         $filePath = $imageDataService->getFilePathFromUrl($imageUrl);
         $yamlWriter = new YamlWriterService();
         $yamlWriter->addDataToYaml($altText, $textLanguage, $filePath);
-    }
+    }*/
 }
