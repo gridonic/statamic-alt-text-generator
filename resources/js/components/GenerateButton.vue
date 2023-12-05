@@ -1,12 +1,11 @@
 <template>
   <div>
-    <button @click="sendData">Generate</button>
-    <input type="text" :id="altText" v-model="responseData" />
+    <button @click="sendData" class="btn" type="button">Generate</button>
+    <input type="text" id="altText" v-model="altText"/>
   </div>
 </template>
 
 <script>
-
 export default {
   mixins: [Fieldtype],
   props: {
@@ -17,7 +16,7 @@ export default {
   data() {
     return {
       isLoading: false,
-      responseData: '',
+      altText: '',
     };
   },
 
@@ -36,13 +35,14 @@ export default {
         },
         body: jsonBody,
       })
-          .then(response => {
-            this.responseData = response.data;
+          .then(response => response.json())
+          .then(data => {
+            this.altText = data.altText;
           })
           .catch(error => {
             console.log(error)
           })
-      }
-    },
+    }
+  },
 };
 </script>
