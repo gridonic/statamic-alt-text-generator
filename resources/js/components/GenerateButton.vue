@@ -1,11 +1,22 @@
 <template>
-  <div class="container">
-    <input type="text" id="altText"  class="text-field" v-model="altText"/>
+  <div>
     <button @click="sendData" id="generate_button" class="btn" type="button">Generate</button>
+    <input
+        class="text-field"
+        ref="input"
+        type="text"
+        id="altText"
+        :value="value"
+        :id="fieldId"
+        @input="inputUpdated"
+        @focus="$emit('focus')"
+        @blur="$emit('blur')"
+    />
   </div>
 </template>
 
 <script>
+
 export default {
   mixins: [Fieldtype],
   props: {
@@ -16,11 +27,19 @@ export default {
   data() {
     return {
       isLoading: false,
-      altText: '',
+      responseData: '',
     };
   },
 
   methods: {
+    inputUpdated(value) {
+      if (! this.config.debounce) {
+        return this.update(value)
+      }
+
+      this.updateDebounced(value)
+    },
+
     sendData() {
       let jsonBody = JSON.stringify(
           {
@@ -35,9 +54,9 @@ export default {
         },
         body: jsonBody,
       })
-          .then(response => response.json())
-          .then(data => {
-            this.altText = data.altText;
+          .then(response => {
+            this.value = response.altText;
+
           })
           .catch(error => {
             console.log(error)
