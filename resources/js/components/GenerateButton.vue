@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <button @click="sendData" id="generate_button" class="btn" type="button">Generate</button>
     <input type="text" id="altText"  class="text-field" v-model="altText"/>
+    <button @click="sendData" id="generate_button" class="btn" type="button">Generate</button>
   </div>
 </template>
 
