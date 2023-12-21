@@ -8,7 +8,7 @@ use GuzzleHttp\Client;
 
 class AltTextAiApiRequestService
 {
-    public function sendRequest(string $imageUrl, string $textLanguage)
+    public function sendRequest(string $rawData, string $textLanguage)
     {
         $apiEndpoint = AltTextAiApi::API_ENDPOINT;
         $client = new Client();
@@ -21,7 +21,7 @@ class AltTextAiApiRequestService
         $data = [
             'lang' => $textLanguage,
             'image' => [
-                'url' => $imageUrl
+                'raw' => $rawData
             ]
         ];
 
@@ -32,7 +32,7 @@ class AltTextAiApiRequestService
             ]);
 
             $responseData = json_decode($response->getBody());
-            $altText = $responseData['alt_text'];
+            $altText = $responseData->alt_text;
         } catch (Exception $e) {
             return $e->getMessage();
         }

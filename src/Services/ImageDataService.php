@@ -7,13 +7,22 @@ class ImageDataService
     public function processImageUrl(string $url): string
     {
         $replacements = array(
-            "/cp" => "",
+            "https://boilerplate.gridonic.test/cp" => "",
             "/browse" => "",
             "_assets" => "",
             "/edit" => "",
         );
-        $imageUrl = strtr($url, $replacements);
+        $imagePath = $_SERVER['DOCUMENT_ROOT'] . strtr($url, $replacements);
 
-        return $imageUrl;
+        $rawData = $this->encodeImage($imagePath);
+        return $rawData;
+    }
+
+    public function encodeImage(string $imagePath): string
+    {
+        $image = file_get_contents($imagePath);
+        $rawData = base64_encode($image);
+
+        return $rawData;
     }
 }

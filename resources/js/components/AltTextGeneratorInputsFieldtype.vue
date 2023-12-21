@@ -1,5 +1,5 @@
 <template>
-  <div ref="node" />
+  <div ref="node"/>
 </template>
 
 <script>
@@ -67,7 +67,7 @@ export default {
       let language = '';
       const parent = e.currentTarget.closest('.form-group');
       const selectedInput = parent.querySelector('.input-group')
-        .querySelector('.input-text');
+          .querySelector('.input-text');
       if (selectedInput.getAttribute('id') === 'field_alt_de') {
         language = 'de';
       } else if (selectedInput.getAttribute('id') === 'field_alt_fr') {
@@ -87,18 +87,18 @@ export default {
         },
         body: dataToSend,
       })
-        .then((response) => response.json())
-        .then((data) => {
-          selectedInput.value = data.altText;
-          const inputEvent = new Event('input', {
-            bubbles: true,
-            cancelable: true,
+          .then((response) => response.json())
+          .then((data) => {
+            selectedInput.value = data.altText;
+            const inputEvent = new Event('input', {
+              bubbles: true,
+              cancelable: true,
+            });
+            selectedInput.dispatchEvent(inputEvent);
+          })
+          .catch((error) => {
+            console.log(error);
           });
-          selectedInput.dispatchEvent(inputEvent);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
     },
   },
 };

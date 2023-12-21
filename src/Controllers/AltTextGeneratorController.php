@@ -38,12 +38,12 @@ class AltTextGeneratorController extends Controller
         $imageDataService = new ImageDataService();
         $altTextAiApiRequestService = new AltTextAiApiRequestService();
 
-        $imageUrl = $imageDataService->processImageUrl($url);
-        if (!$imageUrl) {
-            return new JsonResponse(['error' => 'imageUrl could not be created'], '401');
+        $rawData = $imageDataService->processImageUrl($url);
+        if (!$rawData) {
+            return new JsonResponse(['error' => 'Image raw data could not be created'], '401');
         }
 
-        $altText = $altTextAiApiRequestService->sendRequest($imageUrl, $textLanguage);
+        $altText = $altTextAiApiRequestService->sendRequest($rawData, $textLanguage);
 
         if (!$altText) {
             return new JsonResponse(['error' => 'alt text could not be generated'], '401');
