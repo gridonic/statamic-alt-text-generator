@@ -43,7 +43,7 @@ export default {
         if (labelNode.querySelector('.generate-button')) {
           return;
         }
-
+        // Create button and add listener
         const btn = document.createElement('button');
         btn.className = 'generate-button';
         btn.id = 'generate-button';
@@ -68,6 +68,7 @@ export default {
       const parent = e.currentTarget.closest('.form-group');
       const selectedInput = parent.querySelector('.input-group')
           .querySelector('.input-text');
+      // Get text language from text field
       if (selectedInput.getAttribute('id') === 'field_alt_de') {
         language = 'de';
       } else if (selectedInput.getAttribute('id') === 'field_alt_fr') {

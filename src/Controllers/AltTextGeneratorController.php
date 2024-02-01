@@ -33,6 +33,7 @@ class AltTextGeneratorController extends Controller
         echo json_encode($responseData);
     }
 
+    // Process image data and send request to AltText.ai API
     public function generateAltText(string $url, string $textLanguage)
     {
         $imageDataService = new ImageDataService();
